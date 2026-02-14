@@ -1,72 +1,38 @@
-const images = [
-  "pic1.jpg",
-  "pic2.jpg",
-  "pic3.jpg",
-  "pic4.jpg",
-  "pic5.jpg",
-  "pic6.jpg",
-  "pic7.jpg"
-];
+const music = document.getElementById("bgMusic");
 
-let currentIndex = 0;
-let startX = 0;
-
-// 🎶 Keep music playing across pages
-window.addEventListener("load", () => {
-  const music = document.getElementById("bgMusic");
-  if (localStorage.getItem("musicPlaying")) {
-    music.play().catch(() => {});
-  }
-});
-
-function startMusicAndGo() {
-  const music = document.getElementById("bgMusic");
-  music.play();
-  localStorage.setItem("musicPlaying", "true");
-  window.location.href = "index.html";
+if (music) {
+  const savedTime = localStorage.getItem("musicTime");
+  if (savedTime) music.currentTime = savedTime;
+  music.play().catch(() => {});
 }
 
-// Viewer
-function openViewer(index) {
-  currentIndex = index;
-  document.getElementById("viewer").style.display = "flex";
-  document.getElementById("viewerImg").src = images[currentIndex];
+setInterval(() => {
+  if (music) localStorage.setItem("musicTime", music.currentTime);
+}, 1000);
+
+function enterGallery() {
+  window.location.href = "gallery.html";
 }
 
-function closeViewer() {
-  document.getElementById("viewer").style.display = "none";
+function goFinal() {
+  window.location.href = "final.html";
 }
 
-// Swipe
-document.addEventListener("touchstart", e => {
-  startX = e.touches[0].clientX;
-});
+/* GALLERY SWIPE */
+const track = document.querySelector(".gallery-track");
+if (track) {
+  let index = 0;
+  let startX = 0;
+  const slides = document.querySelectorAll(".gallery-slide");
 
-document.addEventListener("touchend", e => {
-  const diff = e.changedTouches[0].clientX - startX;
-  if (Math.abs(diff) > 50) {
-    diff < 0 ? nextImage() : prevImage();
-  }
-});
+  track.addEventListener("touchstart", e => {
+    startX = e.touches[0].clientX;
+  });
 
-function nextImage() {
-  currentIndex = (currentIndex + 1) % images.length;
-  document.getElementById("viewerImg").src = images[currentIndex];
+  track.addEventListener("touchend", e => {
+    const diff = startX - e.changedTouches[0].clientX;
+    if (diff > 50 && index < slides.length - 1) index++;
+    if (diff < -50 && index > 0) index--;
+    track.style.transform = `translateX(-${index * 100}%)`;
+  });
 }
-
-function prevImage() {
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
-  document.getElementById("viewerImg").src = images[currentIndex];
-}
-
-function goToGallery() {
-  const pages = document.querySelectorAll(".page");
-
-  pages.forEach(page => page.classList.remove("active"));
-
-  document.getElementById("galleryPage").classList.add("active");
-
-  startMusic(); // only if this is the first click
-}
-
-
