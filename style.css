@@ -1,20 +1,16 @@
-/* =========================
-   RESET
-========================= */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* =========================
-   BODY & BACKGROUND
-========================= */
+/* BODY */
 body {
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
   font-family: 'Poppins', sans-serif;
+  overflow: hidden;
 
   background: linear-gradient(
     135deg,
@@ -33,7 +29,7 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* Subtle art paper texture */
+/* ART TEXTURE */
 body::before {
   content: "";
   position: fixed;
@@ -41,90 +37,51 @@ body::before {
   background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
   opacity: 0.15;
   pointer-events: none;
-  z-index: 0;
 }
 
-/* =========================
-   PAGE SYSTEM (CRITICAL)
-========================= */
-.page {
-  position: absolute;
-  inset: 0;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  opacity: 0;
-  filter: blur(12px);
-  transform: scale(0.96);
-  transition: all 1.2s ease;
-
-  pointer-events: auto;
-  z-index: 1;
-}
-
-.page.active {
-  opacity: 1;
-  filter: blur(0);
-  transform: scale(1);
-
-  pointer-events: auto;
-  z-index: 10;
-}
-
-/* =========================
-   INTRO PAGE (CENTER FIX)
-========================= */
-.intro-content {
+/* CENTERING */
+.center {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-
+  align-items: center;
   text-align: center;
   gap: 20px;
   padding: 20px;
 }
 
-.intro-content h1 {
+/* TEXT */
+h1 {
   font-family: 'Playfair Display', serif;
-  font-size: 2.4rem;
+  font-size: 2.5rem;
   color: #2b2b2b;
 }
 
-/* =========================
-   BUTTONS
-========================= */
+/* BUTTON */
 button {
   padding: 14px 28px;
   border-radius: 30px;
   border: none;
-  font-size: 1rem;
   cursor: pointer;
-
-  background: rgba(255,255,255,0.75);
-  transition: all 0.3s ease;
+  font-size: 1rem;
+  background: rgba(255,255,255,0.8);
+  transition: transform 0.3s ease;
 }
 
 button:hover {
   transform: scale(1.08);
-  background: rgba(255,255,255,0.95);
 }
 
-/* =========================
-   GALLERY (FREEZE FIXED)
-========================= */
+/* GALLERY */
 .gallery {
-  position: relative;
-  width: 100%;
   height: 100%;
+  width: 100%;
   overflow: hidden;
 }
 
 .gallery-track {
   display: flex;
-  width: 100%;
   height: 100%;
   transition: transform 0.6s ease;
 }
@@ -132,83 +89,34 @@ button:hover {
 .gallery-slide {
   min-width: 100%;
   height: 100%;
-
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* =========================
-   IMAGE STYLING
-========================= */
 .gallery-slide img {
   max-width: 90%;
   max-height: 90%;
   border-radius: 18px;
-
   box-shadow:
     0 20px 40px rgba(0,0,0,0.25),
     0 0 0 6px rgba(255,255,255,0.4);
-
-  transition: transform 0.7s ease, box-shadow 0.7s ease;
 }
 
-.gallery-slide img:hover {
-  transform: scale(1.04) rotate(0.4deg);
-}
-
-/* =========================
-   FINAL PAGE – ART PIECE
-========================= */
-.final-page {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 40px;
-}
-
+/* FINAL PAGE */
 .final-text {
   font-family: 'Playfair Display', serif;
-  font-size: 2.7rem;
-  line-height: 1.4;
+  font-size: 2.8rem;
   max-width: 80%;
-  color: #2b2b2b;
-
-  animation: softGlow 3.5s ease-in-out infinite alternate;
+  line-height: 1.4;
+  animation: glow 3s ease-in-out infinite alternate;
 }
 
-@keyframes softGlow {
+@keyframes glow {
   from {
-    text-shadow:
-      0 0 10px rgba(255,255,255,0.4),
-      0 0 20px rgba(255,182,193,0.4);
+    text-shadow: 0 0 10px rgba(255,255,255,0.4);
   }
   to {
-    text-shadow:
-      0 0 30px rgba(255,182,193,0.9),
-      0 0 60px rgba(255,200,220,0.8);
+    text-shadow: 0 0 35px rgba(255,182,193,0.9);
   }
 }
-
-/* =========================
-   FLOATING HEARTS (OPTIONAL)
-========================= */
-.heart {
-  position: absolute;
-  font-size: 20px;
-  opacity: 0.25;
-  animation: floatUp 10s linear infinite;
-}
-
-@keyframes floatUp {
-  from {
-    transform: translateY(110vh) rotate(0deg);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(-20vh) rotate(360deg);
-    opacity: 0.4;
-  }
-}
-
