@@ -59,4 +59,14 @@ function prevImage() {
   document.getElementById("viewerImg").src = images[currentIndex];
 }
 
+function goToGallery() {
+  const pages = document.querySelectorAll(".page");
+
+  pages.forEach(page => page.classList.remove("active"));
+
+  document.getElementById("galleryPage").classList.add("active");
+
+  startMusic(); // only if this is the first click
+}
+
 
