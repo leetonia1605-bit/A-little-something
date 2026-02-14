@@ -2,35 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Our Memories 📸</title>
+  <title>Our Gallery 💖</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<audio id="bgMusic" loop>
-  <source src="romantic.mp3" type="audio/mpeg">
-</audio>
+<audio id="bgMusic" src="music.mp3" loop></audio>
 
-<h1 class="title fade-in">Our Little Art Gallery 💗</h1>
+<div class="gallery">
+  <div class="gallery-track">
 
-<div class="gallery fade-in">
-  <img src="pic1.jpg" onclick="openViewer(0)">
-  <img src="pic2.jpg" onclick="openViewer(1)">
-  <img src="pic3.jpg" onclick="openViewer(2)">
-  <img src="pic4.jpg" onclick="openViewer(3)">
-  <img src="pic5.jpg" onclick="openViewer(4)">
-  <img src="pic6.jpg" onclick="openViewer(5)">
-  <img src="pic7.jpg" onclick="openViewer(6)">
-</div>
+    <div class="gallery-slide">
+      <img src="pic1.jpg">
+    </div>
 
-<a class="btn" href="final.html">One Last Thing 🎨💖</a>
-<a class="btn back" href="index.html">← Back</a>
+    <div class="gallery-slide">
+      <img src="pic2.jpg">
+    </div>
 
-<!-- Fullscreen Viewer -->
-<div id="viewer">
-  <span class="close" onclick="closeViewer()">×</span>
-  <img id="viewerImg">
-  <div class="caption">Swipe or tap ❤️</div>
+    <div class="gallery-slide">
+      <img src="pic3.jpg">
+    </div>
+
+    <div class="gallery-slide">
+      <img src="pic4.jpg">
+    </div>
+
+    <div class="gallery-slide">
+      <img src="pic5.jpg">
+    </div>
+
+    <div class="gallery-slide">
+      <img src="pic6.jpg">
+    </div>
+
+    <div class="gallery-slide">
+      <img src="pic7.jpg">
+    </div>
+
+
+    <div class="gallery-slide">
+      <button onclick="goFinal()">One last thing 💖</button>
+    </div>
+
+  </div>
 </div>
 
 <script src="script.js"></script>
