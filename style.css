@@ -60,7 +60,7 @@ body::before {
   transform: scale(0.96);
   transition: all 1.2s ease;
 
-  pointer-events: none;
+  pointer-events: auto;
   z-index: 1;
 }
 
@@ -211,3 +211,4 @@ button:hover {
     opacity: 0.4;
   }
 }
+
