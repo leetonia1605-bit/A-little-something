@@ -1,69 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>For You ❤️</title>
-
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <!-- Main CSS -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- Background Music (ONE time only) -->
-  <audio id="bgMusic" src="music.mp3" loop></audio>
+<audio id="bgMusic" src="music.mp3" loop></audio>
 
-  <!-- ================= INTRO PAGE ================= -->
-  <div class="page active" id="introPage">
-    <div class="intro-content">
-      <h1>Welcome to our little world 💕</h1>
-      <button onclick="goToGallery()">Enter our gallery ✨</button>
-    </div>
-  </div>
+<div class="center">
+  <h1>Welcome to our little world 💕</h1>
+  <button onclick="enterGallery()">Enter our gallery ✨</button>
+</div>
 
-  <!-- ================= GALLERY PAGE ================= -->
-  <div class="page" id="galleryPage">
-    <div class="gallery">
-      <div class="gallery-track">
-
-        <!-- SLIDE 1 -->
-        <div class="gallery-slide">
-          <img src="images/pic1.jpg" alt="Memory 1">
-        </div>
-
-        <!-- SLIDE 2 -->
-        <div class="gallery-slide">
-          <img src="images/pic2.jpg" alt="Memory 2">
-        </div>
-
-        <!-- SLIDE 3 -->
-        <div class="gallery-slide">
-          <img src="images/pic3.jpg" alt="Memory 3">
-        </div>
-
-        <!-- FINAL SLIDE -->
-        <div class="gallery-slide">
-          <button onclick="goToFinal()">One last thing 💖</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- ================= FINAL PAGE ================= -->
-  <div class="page" id="finalPage">
-    <div class="final-page">
-      <div class="final-text">
-        This is my favorite artwork — you 💗
-      </div>
-    </div>
-  </div>
+<script src="script.js"></script>
+</body>
+</html>
 
   <!-- ================= JAVASCRIPT ================= -->
   <script>
     const music = document.getElementById("bgMusic");
     let musicStarted =
+
