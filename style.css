@@ -1,18 +1,21 @@
 /* =========================
-   GLOBAL RESET & FONTS
+   RESET
 ========================= */
-
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
+/* =========================
+   BODY & BACKGROUND
+========================= */
 body {
-  margin: 0;
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
   font-family: 'Poppins', sans-serif;
 
-  /* Artsy animated gradient */
   background: linear-gradient(
     135deg,
     #fbc2eb,
@@ -24,14 +27,13 @@ body {
   animation: gradientFlow 18s ease infinite;
 }
 
-/* Gradient animation */
 @keyframes gradientFlow {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
 
-/* Paper texture overlay (artsy feel) */
+/* Subtle art paper texture */
 body::before {
   content: "";
   position: fixed;
@@ -42,22 +44,13 @@ body::before {
   z-index: 0;
 }
 
-.intro-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  gap: 20px;
-}
-
 /* =========================
-   PAGE TRANSITIONS
+   PAGE SYSTEM (CRITICAL)
 ========================= */
-
 .page {
   position: absolute;
   inset: 0;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,6 +60,7 @@ body::before {
   transform: scale(0.96);
   transition: all 1.2s ease;
 
+  pointer-events: none;
   z-index: 1;
 }
 
@@ -75,36 +69,79 @@ body::before {
   filter: blur(0);
   transform: scale(1);
 
-   z-index: 10;
+  pointer-events: auto;
+  z-index: 10;
 }
 
 /* =========================
-   HEADINGS & TEXT
+   INTRO PAGE (CENTER FIX)
 ========================= */
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-h1, h2 {
+  text-align: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.intro-content h1 {
   font-family: 'Playfair Display', serif;
-  letter-spacing: 1px;
-  color: #2c2c2c;
-}
-
-p {
-  color: #333;
+  font-size: 2.4rem;
+  color: #2b2b2b;
 }
 
 /* =========================
-   IMAGE GALLERY STYLE
+   BUTTONS
 ========================= */
+button {
+  padding: 14px 28px;
+  border-radius: 30px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
 
-.image-slide {
+  background: rgba(255,255,255,0.75);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.08);
+  background: rgba(255,255,255,0.95);
+}
+
+/* =========================
+   GALLERY (FREEZE FIXED)
+========================= */
+.gallery {
+  position: relative;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+}
+
+.gallery-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s ease;
+}
+
+.gallery-slide {
+  min-width: 100%;
+  height: 100%;
+
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.image-slide img {
+/* =========================
+   IMAGE STYLING
+========================= */
+.gallery-slide img {
   max-width: 90%;
   max-height: 90%;
   border-radius: 18px;
@@ -116,54 +153,31 @@ p {
   transition: transform 0.7s ease, box-shadow 0.7s ease;
 }
 
-.image-slide img:hover {
+.gallery-slide img:hover {
   transform: scale(1.04) rotate(0.4deg);
-  box-shadow:
-    0 30px 60px rgba(0,0,0,0.35),
-    0 0 0 6px rgba(255,255,255,0.6);
 }
 
 /* =========================
-   BUTTONS (cute & soft)
+   FINAL PAGE – ART PIECE
 ========================= */
-
-button {
-  padding: 14px 26px;
-  border: none;
-  border-radius: 30px;
-  background: rgba(255,255,255,0.7);
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button:hover {
-  transform: scale(1.08);
-  background: rgba(255,255,255,0.9);
-}
-
-/* =========================
-   FINAL PAGE – MASTERPIECE
-========================= */
-
 .final-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 40px;
 }
 
-/* The iconic line */
 .final-text {
-  font-size: 2.6rem;
-  max-width: 80%;
-  line-height: 1.4;
   font-family: 'Playfair Display', serif;
-
+  font-size: 2.7rem;
+  line-height: 1.4;
+  max-width: 80%;
   color: #2b2b2b;
 
   animation: softGlow 3.5s ease-in-out infinite alternate;
 }
 
-/* Glow animation */
 @keyframes softGlow {
   from {
     text-shadow:
@@ -172,22 +186,14 @@ button:hover {
   }
   to {
     text-shadow:
-      0 0 25px rgba(255,182,193,0.9),
-      0 0 50px rgba(255,200,220,0.7);
+      0 0 30px rgba(255,182,193,0.9),
+      0 0 60px rgba(255,200,220,0.8);
   }
-}
-
-/* Optional subtitle */
-.final-sub {
-  margin-top: 20px;
-  font-size: 1.1rem;
-  opacity: 0.8;
 }
 
 /* =========================
    FLOATING HEARTS (OPTIONAL)
 ========================= */
-
 .heart {
   position: absolute;
   font-size: 20px;
@@ -205,6 +211,3 @@ button:hover {
     opacity: 0.4;
   }
 }
-
-
-
