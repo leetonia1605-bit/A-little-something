@@ -1,36 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>For You 💖</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For You ❤️</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Main CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<audio id="bgMusic" loop>
-  <source src="romantic.mp3" type="audio/mpeg">
-</audio>
-
-<div class="card fade-in">
-  <h1>For My Favorite Person 🎨🍁💘</h1>
-  <p class="soft-text">
-    Every memory with you feels like a piece of art.<br>
-    Soft. Warm. Timeless.
-  </p>
-
-  <button onclick="goToGallery()">Enter Our Gallery 📸
-  </button>
-
-  <button class="btn" onclick="startMusicAndGo()">
-    Enter Our Gallery 📸
-  </button>
-</div>
-
-<script src="script.js"></script>
-</body>
+  <!-- Background Music (ONE time only) -->
   <audio id="bgMusic" src="music.mp3" loop></audio>
 
-</html>
+  <!-- ================= INTRO PAGE ================= -->
+  <div class="page active" id="introPage">
+    <div class="intro-content">
+      <h1>Welcome to our little world 💕</h1>
+      <button onclick="goToGallery()">Enter our gallery ✨</button>
+    </div>
+  </div>
 
+  <!-- ================= GALLERY PAGE ================= -->
+  <div class="page" id="galleryPage">
+    <div class="gallery">
+      <div class="gallery-track">
 
+        <!-- SLIDE 1 -->
+        <div class="gallery-slide">
+          <img src="images/pic1.jpg" alt="Memory 1">
+        </div>
 
+        <!-- SLIDE 2 -->
+        <div class="gallery-slide">
+          <img src="images/pic2.jpg" alt="Memory 2">
+        </div>
+
+        <!-- SLIDE 3 -->
+        <div class="gallery-slide">
+          <img src="images/pic3.jpg" alt="Memory 3">
+        </div>
+
+        <!-- FINAL SLIDE -->
+        <div class="gallery-slide">
+          <button onclick="goToFinal()">One last thing 💖</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FINAL PAGE ================= -->
+  <div class="page" id="finalPage">
+    <div class="final-page">
+      <div class="final-text">
+        This is my favorite artwork — you 💗
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    const music = document.getElementById("bgMusic");
+    let musicStarted =
