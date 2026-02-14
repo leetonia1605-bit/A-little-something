@@ -42,6 +42,15 @@ body::before {
   z-index: 0;
 }
 
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+}
+
 /* =========================
    PAGE TRANSITIONS
 ========================= */
@@ -194,3 +203,4 @@ button:hover {
     opacity: 0.4;
   }
 }
+
